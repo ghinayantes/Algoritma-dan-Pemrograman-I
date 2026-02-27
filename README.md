@@ -1,7 +1,6 @@
 ## Arsip Materi, Tugas, dan Praktikum Algoritma dan Pemrograman I 
 
-Ini adalah tempat spesial untuk mengarsipkan semua **tugas dan kegiatan praktikum** dari mata kuliah Algoritma dan Pemrograman di **Institut Teknologi Bandung (ITB)**, khususnya untuk program studi **Sistem dan Teknologi Informasi**. Repository ini dirancang untuk menjadi arsip akademik yang rapi, informatif, dan pastinya *keren*! 👀
-
+Ini adalah tempat arsip semua **tugas dan praktikum** dari mata kuliah Algoritma dan Pemrograman I, khususnya untuk program studi **Teknik Informatika**.
 ---
 
 ##  Daftar Isi
