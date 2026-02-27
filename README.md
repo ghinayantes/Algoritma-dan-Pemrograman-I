@@ -1,24 +1,11 @@
-** Arsip Materi, Tugas, dan Praktikum Algoritma dan Pemrograman I **
+## Arsip Materi, Tugas, dan Praktikum Algoritma dan Pemrograman I 
 
 Ini adalah tempat spesial untuk mengarsipkan semua **tugas dan kegiatan praktikum** dari mata kuliah Algoritma dan Pemrograman di **Institut Teknologi Bandung (ITB)**, khususnya untuk program studi **Sistem dan Teknologi Informasi**. Repository ini dirancang untuk menjadi arsip akademik yang rapi, informatif, dan pastinya *keren*! 👀
 
 ---
 
-## 📋 · Daftar Isi
-* ✨ [Tentang Repository](#-tentang-repository)
-* 📂 [Struktur Repository](#-struktur-repository)
-* 💻 [Bahasa Pemrograman: C](#-bahasa-pemrograman-c)
-* 🛠️ [Tools dan Software yang Digunakan](#-tools-dan-software-yang-digunakan)
-* 📊 [Lingkup Pelajaran](#-lingkup-pelajaran)
-* 📬 [Kontak](#-kontak)
-
----
-
-## ✨ · Tentang Repository
-Repository ini adalah **koleksi digital** yang berisi semua tugas dan praktikum dari mata kuliah Algoritma dan Pemrograman. 🚀 Tujuannya?
-* 📂 - Memudahkan akses materi perkuliahan.
-* 🗄️ - Mengorganisir file dengan rapi.
-* 🎓 - Menjadi kenang-kenangan akademik yang keren!
+##  Daftar Isi
+* 
 
 ---
 
@@ -31,7 +18,7 @@ Berikut adalah gambaran isi repository ini:
 ---
 
 ## 💻 · Bahasa Pemrograman: C
-Semua tugas dan praktikum di repository ini menggunakan **bahasa C**! 🎯 Bahasa ini dipilih karena merupakan salah satu bahasa pemrograman fundamental yang kuat untuk mempelajari konsep algoritma.
+Semua tugas dan praktikum di repository ini menggunakan **bahasa C**! 
 
 | Bahasa Pemrograman | Badge |
 | :--- | :--- |
@@ -39,7 +26,7 @@ Semua tugas dan praktikum di repository ini menggunakan **bahasa C**! 🎯 Bahas
 
 ---
 
-## 🛠️ · Tools dan Software yang Digunakan
+## Tools dan Software yang Digunakan
 Berikut adalah alat yang saya gunakan selama mengerjakan tugas:
 
 | Tools/Software | Kegunaan | Badge |
@@ -50,7 +37,7 @@ Berikut adalah alat yang saya gunakan selama mengerjakan tugas:
 
 ---
 
-## 📊 · Lingkup Pelajaran
+## Lingkup Pelajaran
 Daftar materi yang dipelajari selama semester ini:
 
 | No | Materi | Waktu Dipelajari |
@@ -64,6 +51,6 @@ Daftar materi yang dipelajari selama semester ini:
 
 ---
 
-## 📬 · Kontak
+## 📬  Kontak
 Jika ada pertanyaan, silakan hubungi saya melalui:
 * **GitHub:** [ghinayantes](https://github.com/ghinayantes)
