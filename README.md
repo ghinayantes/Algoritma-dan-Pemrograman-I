@@ -9,15 +9,17 @@ Ini adalah tempat spesial untuk mengarsipkan semua **tugas dan kegiatan praktiku
 
 ---
 
-## 📂 · Struktur Repository
+## 📂  Struktur Repository
 Berikut adalah gambaran isi repository ini:
 * 📂 **Tugas/** : Tempat untuk semua tugas yang diberikan oleh dosen.
 * 📂 **Praktikum/** : Berisi hasil pengerjaan praktikum.
 * 📂 **PraPraktikum/** : Berisi hasil pengerjaan tugas pra-praktikum.
+* 📂 **PostPraktikum/** : Berisi hasil pengerjaan tugas -praktikum.
+
 
 ---
 
-## 💻 · Bahasa Pemrograman: C
+## 💻  Bahasa Pemrograman: C
 Semua tugas dan praktikum di repository ini menggunakan **bahasa C**! 
 
 | Bahasa Pemrograman | Badge |
@@ -42,12 +44,6 @@ Daftar materi yang dipelajari selama semester ini:
 
 | No | Materi | Waktu Dipelajari |
 | :-- | :--- | :--- |
-| 1 | Diktat Prosedural | Minggu Ke-1 |
-| 2 | Diktat Struktur Data | Minggu Ke-1 |
-| 3 | Pengantar Dunia Pemrograman | Minggu Ke-1 |
-| 4 | Pengenalan Bahasa C | Minggu Ke-2 |
-| 5 | Pointer dalam Bahasa C | Minggu Ke-5 |
-| 6 | Abstract Data Type (ADT) | Minggu Ke-6 |
 
 ---
 
