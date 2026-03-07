@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+    int N, temp, sum = 0;
+
+    scanf("%d", &N);
+    
+    temp = N;
+
+    while (temp > 0) {
+        sum += temp % 10; 
+        temp /= 10;       
+    }
+
+    if (N % sum == 0) {
+        printf("1\n");
+    } else {
+        printf("0\n");
+    }
+
+    return 0;
+}
