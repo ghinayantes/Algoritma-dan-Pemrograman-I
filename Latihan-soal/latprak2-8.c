@@ -6,9 +6,10 @@ int isSegitigaValid(int a, int b, int c) {
 }
 
 int jenisSegitiga(int a, int b, int c) {
-    if(a == b && b == c) return 0;
-    else if (a == b || b == c || a == c) return 1;
-    else return 2;
+    int jenis = 2;
+    if(a == b && b == c) jenis = 0;
+    else if (a == b || b == c || a == c) jenis = 1;
+    return jenis;
 }
 
 void bacaSisi(int *a, int *b, int *c) {
