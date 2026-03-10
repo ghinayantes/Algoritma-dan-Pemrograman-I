@@ -6,16 +6,10 @@ int isKabisat(int yy) {
 }
 
 int dayMax(int mm, int yy) {
-    if(isKabisat(yy)) {
-        if (mm == 1 || mm == 3 || mm == 5 || mm == 7 || mm == 8 || mm == 10 || mm == 12) return 31;
-        else if (mm == 2) return 29;
-        else return 30;
-    }
-    else {
-        if (mm == 4 || mm == 6 || mm == 9 || mm == 11) return 30;
-        else if (mm == 2) return 28;
-        else return 31;
-    }
+    if (mm == 1 || mm == 3 || mm == 5 || mm == 7 || mm == 8 || mm == 10 || mm == 12) return 31;
+    else if (mm == 4 || mm == 6 || mm == 9 || mm == 11) return 30;
+    else if (isKabisat(yy)) return 29;  // cek kabisat hanya untuk Feb
+    else return 28;
 }
 
 int isTanggalValid(int dd, int mm, int yy) {
