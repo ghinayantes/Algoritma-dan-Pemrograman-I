@@ -26,7 +26,7 @@ void cetakPrima(int a, int b) {
     while(i <= b) {             
     if(isPrima(i)) printf("%d ", i);
     i++;
-}
+    }
 }
 
 int main() {
