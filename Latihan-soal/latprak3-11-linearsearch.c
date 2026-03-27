@@ -16,8 +16,7 @@
 
 /* Fungsi mencari semua kemunculan target.
    Menyimpan indeks ke array 'hasil', mengembalikan jumlah kemunculan. */
-int linearSearchSemua(int arr[], int n, int target,
-                      int hasil[], int maxHasil) {
+int linearSearchSemua(int arr[], int n, int target, int hasil[], int maxHasil) {
     int count = 0;
     for (int i = 0; i < n; i++) {
         if (arr[i] == target && count < maxHasil) {
