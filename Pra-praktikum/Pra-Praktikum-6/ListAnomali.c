@@ -55,7 +55,8 @@ IdxType getFirstIdx(ListAnomali T) {
 
 IdxType getLastIndex(ListAnomali T) {
     if(countAnomaly(T) == 0) return IDX_UNDEF;
-    return countAnomaly(T) - 1;
+    IdxType last = (IdxType) countAnomaly(T) - 1;
+    return last;
 }
 /* Prekondisi : List T sembarang (bisa kosong atau bisa terisi) */
 /* Mengirimkan indeks elemen efektif terakhir */
@@ -63,8 +64,8 @@ IdxType getLastIndex(ListAnomali T) {
 
 /* *** Menghasilkan sebuah elemen *** */
 ElType getAnomalyAtIdx(ListAnomali T, IdxType i) {
-    if(countAnomaly(T) == 0) return ELEM_UNDEF;
-    return T.buffer[i];
+    if(isIdxEff(T, i)) return T.buffer[i];
+    return ELEM_UNDEF;
 
 }
 /* Prekondisi : list T sembarang (bisa kosong atau bisa terisi), i antara getFirstIdx() sampai getLastIdx() */
