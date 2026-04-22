@@ -54,14 +54,11 @@ int length(HiddenFaces f) {
 /* Jika list kosong, mengembalikan 0 */
 
 IdxType getFirstIdx(HiddenFaces f) {
-    IdxType i = IDX_MIN;
-    boolean found = false;
-    while(i < CAPACITY && !found) {
-        if(ELMT(f, i) != MARK) found = true;
-        i++;
+     IdxType i;
+    for (i = IDX_MIN; i < CAPACITY; i++) {
+        if (ELMT(f, i) != MARK) return i;
     }
-
-    return i-1;
+    return IDX_UNDEF;
 }
 /* Prekondisi : f tidak kosong */
 /* Mengirimkan indeks elemen pertama */

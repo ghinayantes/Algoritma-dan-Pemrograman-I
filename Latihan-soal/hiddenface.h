@@ -59,7 +59,7 @@ ElType getElmt(HiddenFaces f, IdxType i);
 /* Prekondisi : f tidak kosong */
 /* Mengirimkan elemen list f yang ke-i */
 
-void setElmt(HiddenFaces f, IdxType i, ElType val);
+void setElmt(HiddenFaces *f, IdxType i, ElType val);
 /* Prekondisi : f tidak kosong */
 /* Mengeset nilai elemen list yang ke-i sehingga bernilai val */
 
