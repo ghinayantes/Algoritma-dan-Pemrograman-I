@@ -22,7 +22,7 @@ void MoveLeft (Cursor *C, int step) {
 
 void MoveRight (Cursor *C, int step) {
     int count = step;
-    while(count > 0 && C->CursorPos != C->TextLen + 1) {
+    while(count > 0 && C->CursorPos != C->TextLen) {
         C->CursorPos++;
         count--;
     }
@@ -37,18 +37,20 @@ void Type (Cursor *C, char input) {
     C->TextInput[C->CursorPos] = input;
     C->CursorPos++;
     C->TextLen++;
+    C->TextInput[C->TextLen] = '\0';
 }
 /* Menerima karakter input dan menambahkannya di posisi cursor saat ini
 Setelah menambahkan karakter, posisi cursor akan bergeser selangkah ke kanan */
 
 void Backspace (Cursor *C) {
-    int i;
     if(C->CursorPos == 0) return;
+    int i;
     for(i = C->CursorPos-1; i < C->TextLen-1; i++) {
         C->TextInput[i] = C->TextInput[i+1];
     }
     C->CursorPos--;
     C->TextLen--;
+    C->TextInput[C->TextLen] = '\0';
 }
 /* Menghapus satu karakter di kiri posisi cursor saat ini 
 dan menggeser posisi cursor selangkah ke kiri */

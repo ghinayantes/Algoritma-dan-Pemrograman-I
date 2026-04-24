@@ -47,15 +47,15 @@ boolean SelesaikanPesanan(ListPOS *l, Pesanan *p) {
         printf("GAGAL MENYELESAIKAN\n");
         return false;
     }
+    min = l->buffer[0].waktuMasuk;
+    idx = 0;
     for(i = 0; i < l->neff; i++) {
-        min = l->buffer[0].waktuMasuk;
-        idx = 0;
         if(min > l->buffer[i].waktuMasuk) {
             min = l->buffer[i].waktuMasuk;
             idx = i;
         }
-    *p = l->buffer[idx];
     }
+    *p = l->buffer[idx];
     for(i = idx; i < l->neff-1; i++) {
         l->buffer[i] = l->buffer[i+1];
     }
@@ -66,26 +66,17 @@ boolean SelesaikanPesanan(ListPOS *l, Pesanan *p) {
 /* Menghapus pesanan sesuai idPesanan, kemudian geser semua pesanan di kanannya ke kiri */
 /* Jika tidak ada pesanan yang bisa dibatalkan, print "GAGAL MEMBATALKAN" diakhiri dengan newline */
 void BatalkanPesanan(ListPOS *l, int idPesanan) {
-    int i, id;
-    boolean ada = false;
-    if(l->neff == 0) {
+    int idx = CariIndeksPesanan(*l, idPesanan); 
+
+    if (idx == IDX_UNDEF) { 
         printf("GAGAL MEMBATALKAN\n");
-        return;
-    }
+    } 
     else {
-        for(i = 0; i < l->neff; i++) {
-            if(l->buffer[i].idPesanan  == idPesanan) {
-                ada = true;
-                id = i;
-            }
-        if(ada) {
-            for(i = id; i < l->neff-1; i++) {
-                l->buffer[i] = l->buffer[i+1];
-            }
-            l->neff--;
+        int i;
+        for (i = idx; i < l->neff - 1; i++) {
+            l->buffer[i] = l->buffer[i + 1];
         }
-        else if(!ada) printf("GAGAL MEMBATALKAN\n");
-        }
+        l->neff--; 
     }
 }
 

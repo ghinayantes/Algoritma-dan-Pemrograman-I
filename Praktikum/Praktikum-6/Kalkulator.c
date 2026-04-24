@@ -79,17 +79,18 @@ void UbahOperan (Kalkulator *K, int idx, int oprn) {
 /* Mengubah operan pada posisi idx */
 
 boolean JalankanKalkulasi (Kalkulator *K) {
-    int i, j = 1, hasil;
-    if(!CekError) {
-        hasil = K->Operan[0];
-        for(i = 0; i <= K->NEffOperator; i++) {
-            if(K->Operator[i] == '+') hasil += K->Operan[j];
-            else if(K->Operator[i] == '-') hasil -= K->Operan[j];
-            else if(K->Operator[i] == '*') hasil *= K->Operan[j];
-            else if(K->Operator[i] == '/') hasil /= K->Operan[j];
-        }
-        K->Ans = hasil;
+    if(CekError(*K) || K->NEffOperan == 0) return FALSE;
+
+    int hasil = K->Operan[0];
+    int i;
+    for(i = 0; i < K->NEffOperator; i++) {
+        if(K->Operator[i] == '+') hasil += K->Operan[i+1];
+        else if(K->Operator[i] == '-') hasil -= K->Operan[i+1];
+        else if(K->Operator[i] == '*') hasil *= K->Operan[i+1];
+        else if(K->Operator[i] == '/' && K->Operan[i+1] != 0) hasil /= K->Operan[i+1];
     }
+    K->Ans = hasil;
+    return TRUE;
 }
 /* Jika kalkulasi valid dan berhasil: 
    - Hasil kalkulasi disimpan ke Ans dan fungsi akan mengembalikan true.
@@ -98,18 +99,17 @@ boolean JalankanKalkulasi (Kalkulator *K) {
    Note: Abaikan presedensi operator, cukup ikuti urutan pada list */
 
 void CetakHasil (Kalkulator K) {
+    if (K.NEffOperan == 0) {
+        printf("KALKULATOR MASIH KOSONG\n");
+        return;
+    }
     int i;
     for(i = 0; i < K.NEffOperan; i++) {
-        if(K.NEffOperan == K.NEffOperator)printf("%d%c", K.Operan[i], K.Operator[i]);
-        else {
-            if(i != K.NEffOperan-1) printf("%d%c", K.Operan[i], K.Operator[i]);
-            else printf("%d", K.Operan[i]);
-        }
-        printf("\n");
+        printf("%d", K.Operan[i]);
+        if(i < K.NEffOperator) printf("%c", K.Operator[i]);
     }
-    if(!CekError) {
-        printf("Hasil kalkulasi: %d\n", K.Ans);
-    }
+    printf("\n");
+    if(!CekError(K)) printf("Hasil kalkulasi: %d\n", K.Ans);
     else printf("Hasil kalkulasi: ERROR\n");
 }
 /* Mencetak operan dan operasi yang terlibat serta menampilkan hasil kalkulasi
