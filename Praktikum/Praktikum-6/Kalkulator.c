@@ -2,6 +2,12 @@
 #include "Kalkulator.h"
 
 void BuatKalkulator (Kalkulator *K) {
+    int i;
+    for(i = 0; i < MAX_OPERATOR; i++) {
+        K->Operan[i] = 0;
+        K->Operator[i] = '\0';
+    }
+    K->Operan[MAX_OPERAND-1] = 0;  // elemen terakhir
     K->NEffOperan = 0;
     K->NEffOperator = 0;
     K->Ans = 0;
@@ -11,7 +17,14 @@ void BuatKalkulator (Kalkulator *K) {
  F.S. Terbentuk kalkulator K kosong */
 
 boolean CekError (Kalkulator K) {
-    return K.NEffOperator >= K.NEffOperan;
+    int i;
+    if (K.NEffOperan == 0 && K.NEffOperator == 0) return false;
+    if (K.NEffOperator >= K.NEffOperan) return true;
+    // cek bagi 0
+    for (i = 0; i < K.NEffOperator; i++) {
+        if (K.Operator[i] == '/' && K.Operan[i+1] == 0) return true;
+    }
+    return false;
 }
 /* Mengembalikan nilai true jika kalkulator akan mengeluarkan error dan false jika tidak ada error */
 
@@ -21,7 +34,7 @@ void ResetKalkulator (Kalkulator *K) {
         K->Operan[i] = 0;
         K->Operator[i] = '\0';
     }
-    K->Operan[MAX_OPERAND] = 0;
+    K->Operan[MAX_OPERAND-1] = 0;
     K->NEffOperan = 0;
     K->NEffOperator = 0;
     K->Ans = 0;
@@ -50,7 +63,8 @@ void TambahOperator (Kalkulator *K, char oprtor) {
 }
 /* Menambahkan operator di akhir list */
 
-void HapusOperator (Kalkulator *K) {
+void HapusOperator(Kalkulator *K) {
+    if(K->NEffOperator == 0) return;
     K->Operator[K->NEffOperator-1] = '\0';
     K->NEffOperator--;
 }
@@ -67,7 +81,8 @@ void TambahOperan (Kalkulator *K, int oprn) {
 }
 /* Menambahkan operan di akhir list */
 
-void HapusOperan (Kalkulator *K) {
+void HapusOperan(Kalkulator *K) {
+    if(K->NEffOperan == 0) return;
     K->Operan[K->NEffOperan-1] = 0;
     K->NEffOperan--;
 }
@@ -79,18 +94,25 @@ void UbahOperan (Kalkulator *K, int idx, int oprn) {
 /* Mengubah operan pada posisi idx */
 
 boolean JalankanKalkulasi (Kalkulator *K) {
-    if(CekError(*K) || K->NEffOperan == 0) return FALSE;
+    if(CekError(*K) || K->NEffOperan == 0) return false;
 
     int hasil = K->Operan[0];
     int i;
     for(i = 0; i < K->NEffOperator; i++) {
-        if(K->Operator[i] == '+') hasil += K->Operan[i+1];
-        else if(K->Operator[i] == '-') hasil -= K->Operan[i+1];
-        else if(K->Operator[i] == '*') hasil *= K->Operan[i+1];
-        else if(K->Operator[i] == '/' && K->Operan[i+1] != 0) hasil /= K->Operan[i+1];
+        if(K->Operator[i] == '+') {
+            hasil += K->Operan[i+1];
+        } else if(K->Operator[i] == '-') {
+            hasil -= K->Operan[i+1];
+        } else if(K->Operator[i] == '*') {
+            hasil *= K->Operan[i+1];
+        } else if(K->Operator[i] == '/') {
+            // Perbaikan: Jika bagi 0, langsung gagal
+            if (K->Operan[i+1] == 0) return false; 
+            hasil /= K->Operan[i+1];
+        }
     }
     K->Ans = hasil;
-    return TRUE;
+    return true;
 }
 /* Jika kalkulasi valid dan berhasil: 
    - Hasil kalkulasi disimpan ke Ans dan fungsi akan mengembalikan true.
@@ -98,19 +120,35 @@ boolean JalankanKalkulasi (Kalkulator *K) {
    - Hasil kalkulasi tidak disimpan ke Ans dan fungsi akan mengembalikan false 
    Note: Abaikan presedensi operator, cukup ikuti urutan pada list */
 
-void CetakHasil (Kalkulator K) {
-    if (K.NEffOperan == 0) {
+void CetakHasil(Kalkulator K) {
+     if (K.NEffOperan == 0 && K.NEffOperator == 0) {
         printf("KALKULATOR MASIH KOSONG\n");
         return;
     }
+ 
     int i;
+ 
+    // Kasus khusus: tidak ada operan sama sekali, hanya ada operator
+    if (K.NEffOperan == 0) {
+        for(i = 0; i < K.NEffOperator; i++) printf("%c", K.Operator[i]);
+        printf("\n");
+        printf("Hasil Kalkulasi: ERROR\n");
+        return;
+    }
+ 
+    // Cetak operan dan operator secara bergantian
     for(i = 0; i < K.NEffOperan; i++) {
         printf("%d", K.Operan[i]);
         if(i < K.NEffOperator) printf("%c", K.Operator[i]);
     }
     printf("\n");
-    if(!CekError(K)) printf("Hasil kalkulasi: %d\n", K.Ans);
-    else printf("Hasil kalkulasi: ERROR\n");
+ 
+    if (CekError(K)) {
+        printf("Hasil Kalkulasi: ERROR\n");
+    } else {
+        JalankanKalkulasi(&K);
+        printf("Hasil Kalkulasi: %d\n", K.Ans);
+    }
 }
 /* Mencetak operan dan operasi yang terlibat serta menampilkan hasil kalkulasi
 Contoh 1:
