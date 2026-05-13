@@ -11,7 +11,7 @@ void CreateQueue(Queue *q) {
 
 /* ********* Prototype ********* */
 boolean isEmpty(Queue q) {
-    return (IDX_HEAD(*q) == IDX_UNDEF) && (IDX_TAIL(*q) == IDX_UNDEF);
+    return (IDX_HEAD(q) == IDX_UNDEF) && (IDX_TAIL(q) == IDX_UNDEF);
 }
 /* Mengirim true jika q kosong: idxHead dan idxTail bernilai IDX_UNDEF */
 
