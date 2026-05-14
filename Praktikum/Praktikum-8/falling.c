@@ -14,14 +14,14 @@ int main() {
         } 
     }
     
-    int col=r-1, it = 0;
+    int col = r-1, it = 0;
     while(it < c) {
         int pos = 0;
-        if(col == r-1 && it!=c) {
-            while(col>=0) {
+        if(col == r-1 && it != c) {
+            while(col >= 0) {
                 pos = 0;
                 if(M[col][it] == 0) {
-                    for(j=col-1; j>=0; j--) {
+                    for(j = col-1; j >= 0; j--) {
                         if(M[j][it] != 0) {
                             pos = j;
                             break;
