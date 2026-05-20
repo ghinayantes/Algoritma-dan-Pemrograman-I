@@ -4,45 +4,31 @@
 #include "boolean.h"
 /* linked list sorting*/
 
-int findmax(List l) {
-  int max = INFO(l);
-  l = NEXT(l);
-  while (l) {
-    if (max < INFO(l)) max = INFO(l);
-    l = NEXT(l);
-  }
-  return max;
-}
-
-int findmin(List l) {
-  int min = INFO(l);
-  l = NEXT(l);
-  while (l) {
-    if (min > INFO(l)) min = INFO(l);
-    l = NEXT(l);
-  }
-  return min;
-}
-
-void sortList(List *l, boolean ascending) {
-  List tmp;
-  List curr = *l;
-  int t;
-  CreateList(&tmp);
-  while (*l) {
-    if (ascending) {
-      int m = findmin(*l);
-      deleteAt(l, indexOf(*l, m), &t);
-      insertLast(&tmp, m);
+void trueInPlaceSort(List l) {
+    Address p = l;
+    
+    // Loop pertama berjalan dari depan ke belakang
+    while (p != NULL) {
+        Address q = NEXT(p);
+        Address minMaxNode = p;
+        
+        // Loop kedua mencari nilai terkecil/terbesar di sisa list
+        while (q != NULL) {
+            if (INFO(q) < INFO(minMaxNode)) { // Tinggal ganti arah tanda untuk ascending/descending
+                minMaxNode = q;
+            }
+            q = NEXT(q);
+        }
+        
+        // JIKA ditemukan node yang lebih kecil, CUMA TUKAR INFO-NYA SAJA
+        if (minMaxNode != p) {
+            ElType temp = INFO(p);
+            INFO(p) = INFO(minMaxNode);
+            INFO(minMaxNode) = temp;
+        }
+        
+        p = NEXT(p); // Maju ke gerbong berikutnya
     }
-    else
-    {
-      int m = findmax(*l);
-      deleteAt(l, indexOf(*l, m), &t);
-      insertLast(&tmp, m);
-    }
-  }
-  *l = tmp;
 }
 
 int main() {
