@@ -180,3 +180,20 @@ void printReverse(Address p) {
     printf("%d ", INFO(p)); // Print saat "mundur" dari call stack
 }
 
+// mencari node tengah secara linear
+Address findMiddle(List l) {
+    if (l == NULL) return NULL;
+    
+    Address slow = l;
+    Address fast = l;
+    
+    // Selama fast masih bisa maju 2 langkah
+    while (fast != NULL && NEXT(fast) != NULL) {
+        slow = NEXT(slow);           // Maju 1 langkah
+        fast = NEXT(NEXT(fast));     // Maju 2 langkah
+    }
+    
+    // Saat fast mencapai ujung (NULL atau node terakhir), 
+    // slow pasti berada tepat di tengah list
+    return slow;
+}
